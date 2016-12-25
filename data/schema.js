@@ -1,6 +1,6 @@
 import {makeExecutableSchema} from 'graphql-tools';
-import Book from './schemas/book';
-import Author from './schemas/author';
+import Book from './book/schema';
+import Author from './author/schema';
 import resolvers from './resolvers';
 
 const Query = `

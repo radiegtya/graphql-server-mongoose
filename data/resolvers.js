@@ -1,6 +1,6 @@
 import { merge } from 'lodash';
-import bookResolvers from './resolvers/book';
-import authorResolvers from './resolvers/author';
+import bookResolvers from './book/resolver';
+import authorResolvers from './author/resolver';
 
 const resolvers = merge(bookResolvers, authorResolvers);
 

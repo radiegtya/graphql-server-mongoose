@@ -1,4 +1,4 @@
-import Author from '../connectors/author';
+import Author from './connector';
 
 const resolvers = {
   Query: {

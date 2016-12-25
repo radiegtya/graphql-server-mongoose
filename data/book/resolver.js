@@ -1,13 +1,15 @@
 import { find, filter } from 'lodash';
-import Book from '../connectors/book';
-import Author from '../connectors/author';
+import Book from './connector';
+import Author from '../author/connector';
 const GraphQLJSON = require('graphql-type-json');
 
 const resolvers = {
   JSON: GraphQLJSON,
   Query: {
     books(root, {query}, context){
-      const {selector, options} = query;
+      const selector = (query && query.selector) || {};
+      const options = (query && query.options) || {};
+
       const books = Book.find(selector);
 
       if(options){
@@ -38,7 +40,8 @@ const resolvers = {
       return book;
     },
     updateBook(_, {query, doc}){
-      Book.update(query.selector, {$set: doc});
+      const book = Book.update(query.selector, {$set: doc});
+      return book;
     }
   },
 };
