@@ -5,14 +5,19 @@ import resolvers from './resolvers';
 
 const Query = `
   type Query {
-    books: [Book]
+    books(query: BookQueryInput): [Book]
     authors: [Author]
   }
 `;
 
 const Mutation = `
   type Mutation {
-    createBook(title: String, authorId: String): Book
+
+    # Book create
+    createBook(doc: BookDocInput!): Book
+    # Book update
+    updateBook(criteria: BookQueryInput!, doc: BookDocInput!): Book
+
     createAuthor(name: String): Author
   }
 `;

@@ -33,6 +33,7 @@
     "graphql-server-express": "^0.4.2",
     "graphql-subscriptions": "^0.2.0",
     "graphql-tools": "^0.8.0",
+    "graphql-type-json": "^0.1.4",
     "lodash": "^4.15.0",
     "mongoose": "^4.7.4",
     "mongoose-hook-custom-id": "^0.1.4",

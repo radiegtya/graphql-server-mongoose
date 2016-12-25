@@ -1,11 +1,28 @@
 import { find, filter } from 'lodash';
 import Book from '../connectors/book';
 import Author from '../connectors/author';
+const GraphQLJSON = require('graphql-type-json');
 
 const resolvers = {
+  JSON: GraphQLJSON,
   Query: {
-    books(){
-      return Book.find({})
+    books(root, {query}, context){
+      const {selector, options} = query;
+      const books = Book.find(selector);
+
+      if(options){
+        const {limit, skip, sort} = options;
+        if(limit)
+          books.limit(limit);
+
+        if(skip)
+          books.skip(skip);
+
+        if(sort)
+          books.sort(sort);
+      }
+
+      return books;
     }
   },
   Book: {
@@ -14,10 +31,14 @@ const resolvers = {
     },
   },
   Mutation : {
-    createBook(_, obj){
-      let book = new Book(obj);
+    createBook(_, {doc}){
+      let book = new Book(doc);
       book.save();
 
+      return book;
+    },
+    updateBook(_, {selector, doc}){
+      const book = Book.update(selector, {$set: doc});
       return book;
     }
   },
