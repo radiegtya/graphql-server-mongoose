@@ -4,9 +4,17 @@ import Author from './author/schema';
 import resolvers from './resolvers';
 
 const Query = `
+  scalar JSON
+
   type Query {
-    books(query: BookQueryInput): [Book]
-    authors: [Author]
+    books(query: QueryInput): [Book]
+    authors(query: QueryInput): [Author]
+  }
+
+  # Define criteria here
+  input QueryInput {
+    selector: JSON
+    options: JSON
   }
 `;
 
@@ -16,9 +24,12 @@ const Mutation = `
     # Book create
     createBook(doc: BookDocInput!): Book
     # Book update
-    updateBook(query: BookQueryInput!, doc: BookDocInput!): Book
+    updateBook(query: QueryInput!, doc: BookDocInput!): Book
 
-    createAuthor(name: String): Author
+    # Author create
+    createAuthor(doc: AuthorDocInput!): Author
+    # Author update
+    updateAuthor(query: QueryInput!, doc: AuthorDocInput!): Author
   }
 `;
 

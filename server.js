@@ -12,6 +12,7 @@ import schema from './data/schema';
 
 const GRAPHQL_PORT = 8080;
 const WS_PORT = 8090;
+const MONGO_URL = 'mongodb://localhost:3001/meteor';
 
 const graphQLServer = express().use('*', cors());
 
@@ -49,4 +50,4 @@ new SubscriptionServer(
   websocketServer
 );
 
-mongoose.connect('mongodb://localhost:3001/meteor');
+mongoose.connect(MONGO_URL);

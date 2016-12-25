@@ -1,10 +1,8 @@
 import { find, filter } from 'lodash';
 import Book from './connector';
-import Author from '../author/connector';
-const GraphQLJSON = require('graphql-type-json');
+import Author from '../author/connector'
 
 const resolvers = {
-  JSON: GraphQLJSON,
   Query: {
     books(root, {query}, context){
       const selector = (query && query.selector) || {};
