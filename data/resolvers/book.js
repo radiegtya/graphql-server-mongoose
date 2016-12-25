@@ -37,9 +37,8 @@ const resolvers = {
 
       return book;
     },
-    updateBook(_, {selector, doc}){
-      const book = Book.update(selector, {$set: doc});
-      return book;
+    updateBook(_, {query, doc}){
+      Book.update(query.selector, {$set: doc});
     }
   },
 };

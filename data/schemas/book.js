@@ -8,17 +8,17 @@ const Book = `
     author: Author
   }
 
-  # Define Doc here
-  input BookDocInput {
-    _id: String
-    title: String
-    authorId: String
-  }
-
   # Define criteria here
   input BookQueryInput {
     selector: JSON
     options: JSON
+  }
+
+  # Define doc here
+  input BookDocInput {
+    _id: String
+    title: String
+    authorId: String
   }
 
 `;

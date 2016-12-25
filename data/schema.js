@@ -16,7 +16,7 @@ const Mutation = `
     # Book create
     createBook(doc: BookDocInput!): Book
     # Book update
-    updateBook(criteria: BookQueryInput!, doc: BookDocInput!): Book
+    updateBook(query: BookQueryInput!, doc: BookDocInput!): Book
 
     createAuthor(name: String): Author
   }
