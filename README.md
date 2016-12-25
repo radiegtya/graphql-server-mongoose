@@ -65,8 +65,14 @@ get all books with parameter
   #variables
   {
     "query": {
-      "selector": {},
-      "options": {}  
+      "selector": {
+          "title": {"$regex": "the", "$options": "i"}
+      },
+      "options": {
+        "sort": {"title": -1},
+        "limit": 2,
+        "skip": 0
+      }  
     }
   }
 
